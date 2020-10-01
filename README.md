@@ -13,3 +13,5 @@
 /////// <div id="app"></div>
 /////// <h1>Hello World</h1>
 /////// <script src="dist/bundle.js"></script>
+
+// Next time press 'yes' git ignore "node_modules" way too many of them.
