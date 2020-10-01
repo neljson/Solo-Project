@@ -1,0 +1,32 @@
+{
+  "name": "solo-project",
+  "version": "1.0.0",
+  "description": "react_webpack",
+  "main": "./src/index.js",
+  "scripts": {
+    "create": "webpack",
+    "start": "node server/server.js",
+    "build": "NODE_ENV=production webpack",
+    "dev": "concurrently \"NODE_ENV=development webpack-dev-server --open\" \"nodemon server/server.js\""
+  },
+  "author": "Nelson Wu",
+  "license": "MIT",
+  "dependencies": {
+    "nodemon": "^2.0.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "concurrently": "^5.3.0",
+    "css-loader": "^4.3.0",
+    "html-webpack-plugin": "^4.5.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
