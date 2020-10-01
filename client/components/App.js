@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
+import Popular from './Popular'
+
+/* optional "container" class to add CSS to Popular component if time allows */
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <h1>My React App</h1>
+      <div className="container">
+        <Popular />
       </div>
     )
   }

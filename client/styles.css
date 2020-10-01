@@ -1,3 +1,53 @@
+/* not sure why html and body 
+border-box property makes it so our element is actually 100 height and width,
+instead of adding extra padding or border around it
+*/
+html,
+body,
+#app {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+
 body {
   background: lightblue;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  /* gets rid of bullet points */
+  list-style-type: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.flex-center {
+  /* styles for our Popular component */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* makes all our buttons transparent with no colored background */
+.btn-clear {
+  border: none;
+  background: transparent;
+}
+
+/* second class for buttons in our Popular component*/
+.nav-link {
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
 }

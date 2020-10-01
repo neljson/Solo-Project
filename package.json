@@ -2,7 +2,7 @@
   "name": "solo-project",
   "version": "1.0.0",
   "description": "react_webpack",
-  "main": "./src/index.js",
+  "main": "./client/index.js",
   "scripts": {
     "create": "webpack",
     "start": "node server/server.js",
