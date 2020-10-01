@@ -14,7 +14,7 @@
 /////// <h1>Hello World</h1>
 /////// <script src="dist/bundle.js"></script>
 
-// Next time press 'yes' git ignore "node_modules" way too many of them.
+// Next time press 'yes' git ignore "node_modules" WAY TOO MANY OF THEM ~5k !!
 
 // TM: index.js --> my project --> App.js
 ////// index.html inside of components folder --> my project --> index.html outside in root directory
