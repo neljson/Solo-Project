@@ -7,31 +7,32 @@ export default class Popular extends Component {
     super()
 
     this.state = {
-      selectedCohort: '',
+      selectedLanguage: '',
       // repos initially null. isLoading method will display a "loading screen text" while
       // we wait for fetch request.
       repos: null,
     }
 
-    this.updateCohortColor = this.updateCohortColor.bind(this)
+    this.updateLanguage = this.updateLanguage.bind(this)
     this.isLoading = this.isLoading.bind(this)
   }
 
-  // when you refresh page or enter page for first time, we get blank loading screen
-  // b/c when component first mounts we are not fetching anything. The fix:
-  // componentDidMount() {
-  //   this.updateCohortColor(this.state.selectedCohort)
-  // }
+  // when you refresh the page or user enters site for first time, we still get the loading screen message.
+  // We don't want to fetch any data when the component first mounts, it should only display loading message
+  // when user clicks on one of the buttons to fetch data.
+  //  The fix:
+  componentDidMount() {
+    this.updateLanguage(this.state.selectedLanguage)
+  }
 
-  //changes button color when when cohort button is clicked
-  updateCohortColor(selectedCohort) {
+  //changes button color when when Javascript/Java button is clicked
+  updateLanguage(selectedLanguage) {
     this.setState({
-      selectedCohort,
+      selectedLanguage,
       repos: null,
     })
-    fetchRepos()
+    fetchRepos(selectedLanguage)
       .then((repos) =>
-        // console.log(data)
         this.setState({
           repos,
           error: null,
@@ -46,32 +47,30 @@ export default class Popular extends Component {
     return this.state.repos === null
   }
   render() {
-    const cohortsList = ['Cohort 20', 'Cohort 21']
+    const languageList = ['Javascript', 'Java']
     const { repos } = this.state
     return (
       <div>
         <ul className="flex-center">
-          {cohortsList.map((cohort) => (
-            <li key={cohort}>
+          {languageList.map((language) => (
+            <li key={language}>
               <button
                 className="btn-clear nav-link"
                 style={
-                  cohort === this.state.selectedCohort
+                  language === this.state.selectedLanguage
                     ? { color: 'rgb(30, 215, 96)' }
                     : null
                 }
-                onClick={() => this.updateCohortColor(cohort)}
+                onClick={() => this.updateLanguage(language)}
               >
-                {cohort}
+                {language}
               </button>
             </li>
           ))}
         </ul>
-
-        <pre> {JSON.stringify(repos, null, 2)}</pre>
+        {this.isLoading() && <p>Loading...this will take a few seconds</p>}
+        {repos && <pre>{JSON.stringify(repos, null, 2)}</pre>}
       </div>
     )
   }
 }
-
-// {/* {this.isLoading() && <p>Loading...may take a few seconds</p>} */}

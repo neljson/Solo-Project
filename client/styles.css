@@ -40,6 +40,8 @@ li {
 
 /* makes all our buttons transparent with no colored background */
 .btn-clear {
+  margin-right: 100px;
+  margin-left: 100px;
   border: none;
   background: transparent;
 }

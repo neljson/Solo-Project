@@ -1,6 +1,6 @@
-export function fetchRepos() {
+export function fetchRepos(language) {
   const endpoint = window.encodeURI(
-    `https://api.github.com/search/repositories?q=stars:>1+language:javascript&sort=stars&order=desc&type=Repositories`
+    `https://api.github.com/search/repositories?q=stars:>1+language:${language}&sort=stars&order=desc&type=Repositories`
   )
   return fetch(endpoint)
     .then((res) => res.json())
@@ -8,7 +8,7 @@ export function fetchRepos() {
       if (!data.items) {
         throw new Error(data.message)
       }
-
+      console.log(data.items[0])
       return data.items
     })
 }
