@@ -49,6 +49,17 @@ export default class Popular extends Component {
   render() {
     const languageList = ['Javascript', 'Java']
     const { repos } = this.state
+
+    // careful ternary set to empty array b/c when page renders fetch has not gotten back repos data yet.
+    const cards = repos
+      ? repos.map((repo) => (
+          <div>
+            <img src={repo.owner.avatar_url} />
+            <p>{repo.name}</p>
+          </div>
+        ))
+      : []
+
     return (
       <div>
         <ul className="flex-center">
@@ -69,8 +80,10 @@ export default class Popular extends Component {
           ))}
         </ul>
         {this.isLoading() && <p>Loading...this will take a few seconds</p>}
-        {repos && <pre>{JSON.stringify(repos, null, 2)}</pre>}
+        {repos && cards}
       </div>
     )
   }
 }
+
+// {repos && <pre>{JSON.stringify(repos, null, 2)}</pre>}
