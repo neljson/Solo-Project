@@ -53,3 +53,12 @@ li {
   text-decoration: none;
   color: inherit;
 }
+
+/* .grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.space-around {
+  justify-content: space-around;
+} */

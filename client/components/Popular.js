@@ -1,6 +1,7 @@
 import React from 'react'
 import { Component } from 'react'
 import { fetchRepos } from '../api'
+import { fetchCodesmith } from '../codesmithapi'
 
 export default class Popular extends Component {
   constructor() {
@@ -27,27 +28,44 @@ export default class Popular extends Component {
 
   //changes button color when when Javascript/Java button is clicked
   updateLanguage(selectedLanguage) {
-    this.setState({
-      selectedLanguage,
-      repos: null,
-    })
-    fetchRepos(selectedLanguage)
-      .then((repos) =>
-        this.setState({
-          repos,
-          error: null,
-        })
-      )
-      .catch(() => {
-        console.warn('Error fetching our repos with fetchRepos method', error)
+    if (selectedLanguage === 'Codesmith Repos: Hall of Fame') {
+      this.setState({
+        selectedLanguage,
+        repos: null,
       })
+      fetchCodesmith()
+        .then((repos) =>
+          this.setState({
+            repos,
+            error: null,
+          })
+        )
+        .catch(() => {
+          console.warn('Error fetching our repos with fetchRepos method', error)
+        })
+    } else {
+      this.setState({
+        selectedLanguage,
+        repos: null,
+      })
+      fetchRepos(selectedLanguage)
+        .then((repos) =>
+          this.setState({
+            repos,
+            error: null,
+          })
+        )
+        .catch(() => {
+          console.warn('Error fetching our repos with fetchRepos method', error)
+        })
+    }
   }
 
   isLoading() {
     return this.state.repos === null
   }
   render() {
-    const languageList = ['Javascript', 'Java']
+    const languageList = ['Javascript', 'Java', 'Codesmith Repos: Hall of Fame']
     const { repos } = this.state
 
     // careful ternary set to empty array b/c when page renders fetch has not gotten back repos data yet.
@@ -56,6 +74,11 @@ export default class Popular extends Component {
           <div>
             <img src={repo.owner.avatar_url} />
             <p>{repo.name}</p>
+            <p>
+              <span>stars: {repo.stargazers_count}⭐️ </span>
+              <p></p>
+              <span>forks: {repo.forks_count}🍴</span>
+            </p>
           </div>
         ))
       : []

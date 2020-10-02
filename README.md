@@ -18,3 +18,8 @@
 
 // TM: index.js --> my project --> App.js
 ////// index.html inside of components folder --> my project --> index.html outside in root directory
+
+// Issues to fix:
+// Homepage lists all repos overall with most stars (I think), so need an "all" page.
+// CSS style cards to look more presentable
+// Codesmith projects URI do not sort by star order.
